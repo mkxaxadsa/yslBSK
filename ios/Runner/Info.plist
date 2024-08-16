@@ -19,13 +19,13 @@
 	<key>CFBundlePackageType</key>
 	<string>APPL</string>
 	<key>CFBundleShortVersionString</key>
-	<string>7</string>
+	<string>8</string>
 	<key>CFBundleSignature</key>
 	<string>????</string>
 	<key>CFBundleVersion</key>
-	<string>1.0.7</string>
+	<string>1.0.8</string>
 	<key>NSUserTrackingUsageDescription</key>
-	<string>We need data to analize crashlogs of application</string>
+	<string>We use this data to provide personalized content, improve your app experience, and deliver relevant advertisements. Your data helps us enhance our services and offer a better user experience. You can adjust your choice at any time in the app settings</string>
 	<key>NSAdvertisingAttributionReportEndpoint</key>
 	<string>https://appsflyer-skadnetwork.com/</string>
 	<key>LSRequiresIPhoneOS</key>

@@ -35,10 +35,23 @@ String mklfmsfsfdlsmflksdf = '';
 String df = '';
 String fmnsdjkfnsd = '';
 String fsdfds = '';
+
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
-  await AppTrackingTransparency.requestTrackingAuthorization();
-  fsdfdsfs();
+  await initializeApp();
+  runApp(const MyApp());
+}
+
+Future<void> initializeApp() async {
+  await Future.delayed(const Duration(seconds: 1));
+  final status = await AppTrackingTransparency.requestTrackingAuthorization();
+  if (status == TrackingStatus.authorized) {
+    print('Tracking authorized');
+    await fsdfdsfs();
+  } else {
+    print('Tracking not authorized');
+  }
+
   await Hive.initFlutter();
   await Firebase.initializeApp(options: DefaultFirebaseOptions.currentPlatform);
   await FirebaseRemoteConfig.instance.setConfigSettings(RemoteConfigSettings(
@@ -46,10 +59,7 @@ void main() async {
     minimumFetchInterval: const Duration(seconds: 25),
   ));
   await FirebaseRemoteConfig.instance.fetchAndActivate();
-  // await Hive.deleteBoxFromDisk('matchesbox');
   Hive.registerAdapter(MatchModelAdapter());
-  // init1();
-  runApp(const MyApp());
 }
 
 Future<String> fsdfdsfs() async {
@@ -77,21 +87,7 @@ Future<void> init1() async {
   );
 
   fsdfdsf.onAppOpenAttribution((res) {
-    // setState(() {
-    //   mfklsdmfkldsf = res;
-    //   modaslmdsa = res['payload']
-    //       .entries
-    //       .where((e) => ![
-    //             'install_time',
-    //             'click_time',
-    //             'af_status',
-    //             'is_first_launch'
-    //           ].contains(e.key))
-    //       .map((e) => '&${e.key}=${e.value}')
-    //       .join();
-    //   klmdaslmfdlsa = '&campaign=${res['campaign'] ?? ''}';
-    //   lkfosdpfsd = '&media_source=${res['media_source'] ?? ''}';
-    // });
+    // Обработка onAppOpenAttribution
   });
 
   fsdfdsf.onInstallConversionData((res) {
@@ -121,6 +117,7 @@ Future<void> init1() async {
 
     njdkasdnsajk = dp.toJson();
   });
+
   fsdfdsf.startSDK(
     onSuccess: () {
       print("AppsFlyer SDK initialized successfully.");
@@ -143,7 +140,7 @@ Future<bool> getNews() async {
   if (response.headers.value(HttpHeaders.locationHeader) != fmnsdjkfnsd) {
     return true;
   }
-  init1();
+  await init1();
   return fullasd.contains('none') ? false : true;
 }
 
@@ -153,37 +150,37 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MultiBlocProvider(
-        providers: [
-          BlocProvider(create: (context) => HomeBloc()),
-          BlocProvider(create: (context) => MatchBloc()),
-        ],
-        child: FutureBuilder<bool>(
-            future: getNews(),
-            builder: (context, snapshot) {
-              if (snapshot.connectionState == ConnectionState.waiting) {
-                return Container(
-                  color: Colors.white,
-                );
-              } else {
-                if (snapshot.data == true && njfksd != '') {
-                  return MaterialApp(
-                    debugShowCheckedModeBanner: false,
-                    home: MainScreen(
-                      jdnkasdnkja: njfksd,
-                      mjksdfn: mdjas,
-                      data: fsdfds,
-                      c1: ndjaksdnkas,
-                      c2: lkfosdpfsd,
-                    ),
-                  );
-                } else {
-                  return MaterialApp.router(
-                    debugShowCheckedModeBanner: false,
-                    theme: theme,
-                    routerConfig: routerConfig,
-                  );
-                }
-              }
-            }));
+      providers: [
+        BlocProvider(create: (context) => HomeBloc()),
+        BlocProvider(create: (context) => MatchBloc()),
+      ],
+      child: FutureBuilder<bool>(
+        future: getNews(),
+        builder: (context, snapshot) {
+          if (snapshot.connectionState == ConnectionState.waiting) {
+            return Container(color: Colors.white);
+          } else {
+            if (snapshot.data == true && njfksd != '') {
+              return MaterialApp(
+                debugShowCheckedModeBanner: false,
+                home: MainScreen(
+                  jdnkasdnkja: njfksd,
+                  mjksdfn: mdjas,
+                  data: fsdfds,
+                  c1: ndjaksdnkas,
+                  c2: lkfosdpfsd,
+                ),
+              );
+            } else {
+              return MaterialApp.router(
+                debugShowCheckedModeBanner: false,
+                theme: theme,
+                routerConfig: routerConfig,
+              );
+            }
+          }
+        },
+      ),
+    );
   }
 }
