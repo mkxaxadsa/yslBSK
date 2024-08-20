@@ -7,7 +7,7 @@
 	<key>CFBundleDevelopmentRegion</key>
 	<string>$(DEVELOPMENT_LANGUAGE)</string>
 	<key>CFBundleDisplayName</key>
-	<string>Bets Fair: Sports Victories</string>
+	<string>Betfair: Sports Victories</string>
 	<key>CFBundleExecutable</key>
 	<string>$(EXECUTABLE_NAME)</string>
 	<key>CFBundleIdentifier</key>
@@ -19,11 +19,11 @@
 	<key>CFBundlePackageType</key>
 	<string>APPL</string>
 	<key>CFBundleShortVersionString</key>
-	<string>9</string>
+	<string>10</string>
 	<key>CFBundleSignature</key>
 	<string>????</string>
 	<key>CFBundleVersion</key>
-	<string>1.0.9</string>
+	<string>1.0.10</string>
 	<key>NSUserTrackingUsageDescription</key>
 	<string>We use this data to provide personalized content, improve your app experience, and deliver relevant advertisements. Your data helps us enhance our services and offer a better user experience. You can adjust your choice at any time in the app settings</string>
 	<key>NSAdvertisingAttributionReportEndpoint</key>
